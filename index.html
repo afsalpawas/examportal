@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard - Exam Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      min-height: 100vh;
+      background-color: #f8f9fa;
+    }
+    .sidebar {
+      height: 100vh;
+      background-color: #037ffc;
+      color: white;
+      padding-top: 20px;
+      position: fixed;
+      width: 250px;
+    }
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 12px 20px;
+      cursor: pointer;
+    }
+    .sidebar a:hover {
+      background-color: #025eb3;
+    }
+    .main {
+      margin-left: 250px;
+      padding: 30px;
+    }
+    .content-section {
+      display: none;
+    }
+    .content-section.active {
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+      }
+      .main {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h4 class="text-center mb-4">Admin Panel</h4>
+    <a onclick="showSection('createUser')">Create User</a>
+    <a onclick="showSection('viewStudents')">All Students</a>
+    <a onclick="showSection('viewTeachers')">All Teachers</a>
+    <a onclick="showSection('viewPapers')">View Question Papers</a>
+    <a onclick="showSection('viewMarks')">View Marks</a>
+    <a href="#">Logout</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- Create User Section -->
+    <div id="createUser" class="content-section active">
+      <h3>Create User</h3>
+      <form>
+        <div class="mb-3">
+          <label for="userType" class="form-label">User Type</label>
+          <select class="form-select" id="userType">
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+    </div>
+
+    <!-- View Students Section -->
+    <div id="viewStudents" class="content-section">
+      <h3>All Students</h3>
+      <p>Display student list here.</p>
+      <!-- Example table -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Student ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Password</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>John Doe</td>
+            <td>johndoe@example.com</td>
+            <td>password123</td> <!-- Display password here -->
+          </tr>
+          <!-- Add more rows as needed -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- View Teachers Section -->
+    <div id="viewTeachers" class="content-section">
+      <h3>All Teachers</h3>
+      <p>Display teacher list here.</p>
+      <!-- Example table -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Teacher ID</th>
+            <th>Username</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Jane Smith</td>
+            <td>janesmith@example.com</td>
+          </tr>
+          <!-- Add more rows as needed -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- View Question Papers Section -->
+    <div id="viewPapers" class="content-section">
+      <h3>View Question Papers</h3>
+      <p>Display question papers here.</p>
+      <!-- Example list -->
+      <ul>
+        <li>Maths - Midterm Exam</li>
+        <li>Science - Final Exam</li>
+      </ul>
+    </div>
+
+    <!-- View Marks Section -->
+    <div id="viewMarks" class="content-section">
+      <h3>View Marks</h3>
+      <p>Display marks or report cards here.</p>
+      <!-- Example table -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Marks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>John Doe</td>
+            <td>85</td>
+          </tr>
+          <!-- Add more rows as needed -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- JavaScript for switching sections -->
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(section => section.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
